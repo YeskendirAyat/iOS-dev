@@ -10,16 +10,18 @@ import UIKit
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var mainViewTable: UITableView!
-    var persons = [Person.init("AAA","111",UIImage.init(named: "male")!),
+    var persons = [
                    Person.init("BBB", "222", UIImage.init(named: "female")!),
-                   Person.init("CCC", "333", UIImage.init(named: "male")!),
-                   Person.init("DDD", "444", UIImage.init(named: "female")!),
-                   Person.init("EEE", "555", UIImage.init(named: "male")!),
                    Person.init("FFF", "666", UIImage.init(named: "female")!),
+                   Person.init("CCC", "333", UIImage.init(named: "male")!),
+                   Person.init("EEE", "555", UIImage.init(named: "male")!),
+                   Person.init("AAA","111",UIImage.init(named: "male")!),
+                   Person.init("DDD", "444", UIImage.init(named: "female")!)
                     ]
     override func viewDidLoad() {
         super.viewDidLoad()
         mainViewTable.reloadData()
+        persons.sort(by: {$0.name<$1.name})
 //        tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,17 +42,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return cell!
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="AddContactSegue" {
-            _=segue.destination as! AddPersonViewController
-        }
-        else if segue.identifier=="MoveToContact"{
+//        if segue.identifier=="AddContactSegue" {
+////            _=segue.destination as! AddPersonViewController
+//        }
+         if segue.identifier=="MoveToContact"{
             let distination=segue.destination as! DetailViewController
             let person = persons[mainViewTable.indexPathForSelectedRow!.row]
             distination.person=person
-            distination.removeContact=mainViewTable.indexPathForSelectedRow!.row
+            distination.indexRemove=mainViewTable.indexPathForSelectedRow!.row
         }
     }
+    
     @IBAction func unwindToPage(_ unwindSegue: UIStoryboardSegue) {
+//        mainViewTable.reloadData()
+        persons.sort(by: {$0.name<$1.name})
         mainViewTable.reloadData()
 //        let vc=unwindSegue.source as? AddPersonViewController
 //        persons.append(Person.init(vc?.newPersonName, vc?.newPersonPhoneNumber, UI))

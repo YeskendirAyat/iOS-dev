@@ -40,7 +40,6 @@ class AddPersonViewController: UIViewController, UIPickerViewDataSource, UIPicke
             let mainVC = segue.destination as! ViewController
             mainVC.persons.append(Person.init(nameTextField.text!,numberTextField.text!, UIImage.init(named:gender!)!))
             
-            
 //            mainVC.persons.append(Person.init(self.newPersonName!, self.newPersonPhoneNumber!,UIImage.init(named: "male")!))
         }
     }

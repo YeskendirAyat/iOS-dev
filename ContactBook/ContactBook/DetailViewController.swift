@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var person:Person?=nil
-    var removeContact:Int?
+    var indexRemove:Int?
     
     @IBOutlet weak var nameSurenameLabel: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
@@ -19,7 +19,11 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="GoBack"{
             let mainVC = segue.destination as! ViewController
-            mainVC.persons.remove(at: removeContact!)
+            mainVC.persons.remove(at: indexRemove!)
+        }
+        else if segue.identifier=="goCall"{
+            let callVC=segue.destination as! CallViewController
+            callVC.number=person?.phoneNumber
         }
     }
     override func viewDidLoad() {
@@ -31,6 +35,6 @@ class DetailViewController: UIViewController {
         personImage.clipsToBounds=true
         personImage.layer.borderColor=UIColor.black.cgColor
         personImage.layer.borderWidth=2
+        CallButton.layer.cornerRadius=10
     }
-
 }

@@ -245,6 +245,9 @@
                                 <state key="normal" title="Call">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="AFv-gt-10P" kind="show" identifier="goCall" id="Aqo-ik-g2I"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TKQ-WF-X0M"/>
@@ -275,6 +278,61 @@
             </objects>
             <point key="canvasLocation" x="613.84615384615381" y="-296.44549763033172"/>
         </scene>
+        <!--Call View Controller-->
+        <scene sceneID="tYa-lS-i2q">
+            <objects>
+                <viewController storyboardIdentifier="CallBoard" id="AFv-gt-10P" customClass="CallViewController" customModule="ContactBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dGW-aj-qx8">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJ2-qw-r5e" customClass="RoundButton" customModule="ContactBook" customModuleProvider="target">
+                                <rect key="frame" x="145" y="588" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.90779799220000001" green="0.29953417180000003" blue="0.2352544963" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IHK-6y-d93"/>
+                                    <constraint firstAttribute="width" constant="100" id="xbB-Y7-g8p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" image="phone.down" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="endCall:" destination="AFv-gt-10P" eventType="touchUpInside" id="Oc7-KJ-ej5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zs-hp-mNn">
+                                <rect key="frame" x="16" y="186" width="358" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="lmk-MZ-dNB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="y4u-im-Iqd"/>
+                        <color key="backgroundColor" red="0.13335186239999999" green="0.1293110847" blue="0.13725748660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="DJ2-qw-r5e" firstAttribute="leading" secondItem="y4u-im-Iqd" secondAttribute="leading" constant="145" id="10S-yI-LIM"/>
+                            <constraint firstItem="y4u-im-Iqd" firstAttribute="trailing" secondItem="DJ2-qw-r5e" secondAttribute="trailing" constant="145" id="4SS-tm-OfM"/>
+                            <constraint firstItem="y4u-im-Iqd" firstAttribute="trailing" secondItem="2zs-hp-mNn" secondAttribute="trailing" constant="16" id="693-vj-dXB"/>
+                            <constraint firstItem="DJ2-qw-r5e" firstAttribute="top" secondItem="2zs-hp-mNn" secondAttribute="bottom" constant="338" id="WXi-ry-eyg"/>
+                            <constraint firstItem="2zs-hp-mNn" firstAttribute="leading" secondItem="y4u-im-Iqd" secondAttribute="leading" constant="16" id="aoW-tH-zWL"/>
+                            <constraint firstItem="2zs-hp-mNn" firstAttribute="top" secondItem="y4u-im-Iqd" secondAttribute="top" constant="98" id="cMJ-Ae-D9r"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fHt-IL-y27"/>
+                    <connections>
+                        <outlet property="CallViewCOntroller" destination="dGW-aj-qx8" id="DAG-kH-2Dy"/>
+                        <outlet property="NumberLabel" destination="2zs-hp-mNn" id="rBn-Ri-oyQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZKV-JL-kup" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1401.5384615384614" y="-296.44549763033172"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rDN-wz-5Pa">
             <objects>
@@ -294,7 +352,13 @@
             <point key="canvasLocation" x="-1240" y="99"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="DJ2-qw-r5e">
+            <size key="intrinsicContentSize" width="23" height="29"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="phone.down" catalog="system" width="128" height="57"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
